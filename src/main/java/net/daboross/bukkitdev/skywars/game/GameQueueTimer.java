@@ -16,9 +16,6 @@
  */
 package net.daboross.bukkitdev.skywars.game;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 import net.daboross.bukkitdev.skywars.SkyWarsPlugin;
 import net.daboross.bukkitdev.skywars.api.SkyStatic;
 import net.daboross.bukkitdev.skywars.api.translations.SkyTrans;
@@ -27,6 +24,10 @@ import net.daboross.bukkitdev.skywars.events.events.GameStartInfo;
 import net.daboross.bukkitdev.skywars.events.events.PlayerJoinQueueInfo;
 import net.daboross.bukkitdev.skywars.events.events.PlayerLeaveQueueInfo;
 import org.bukkit.Bukkit;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 public class GameQueueTimer {
 

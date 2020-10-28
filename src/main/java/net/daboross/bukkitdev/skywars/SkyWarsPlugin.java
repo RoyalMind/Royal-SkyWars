@@ -16,15 +16,7 @@
  */
 package net.daboross.bukkitdev.skywars;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
-import java.nio.file.Path;
-import java.util.Locale;
-import java.util.UUID;
-import java.util.logging.Level;
+import me.tigerhix.lib.scoreboard.ScoreboardLib;
 import net.daboross.bukkitdev.bukkitstorageprotobuf.ProtobufStatic;
 import net.daboross.bukkitdev.skywars.api.SkyStatic;
 import net.daboross.bukkitdev.skywars.api.SkyWars;
@@ -46,30 +38,11 @@ import net.daboross.bukkitdev.skywars.economy.EconomyFailedException;
 import net.daboross.bukkitdev.skywars.economy.SkyEconomyGameRewards;
 import net.daboross.bukkitdev.skywars.economy.SkyEconomyHook;
 import net.daboross.bukkitdev.skywars.events.GameEventDistributor;
-import net.daboross.bukkitdev.skywars.events.listeners.BackupInventoryClearListener;
-import net.daboross.bukkitdev.skywars.events.listeners.GameBroadcaster;
-import net.daboross.bukkitdev.skywars.events.listeners.InventorySaveListener;
-import net.daboross.bukkitdev.skywars.events.listeners.KitApplyListener;
-import net.daboross.bukkitdev.skywars.events.listeners.KitQueueNotifier;
-import net.daboross.bukkitdev.skywars.events.listeners.ResetHealthListener;
-import net.daboross.bukkitdev.skywars.events.listeners.SignListener;
-import net.daboross.bukkitdev.skywars.game.CurrentGames;
-import net.daboross.bukkitdev.skywars.game.GameHandler;
-import net.daboross.bukkitdev.skywars.game.GameIDHandler;
-import net.daboross.bukkitdev.skywars.game.GameQueue;
-import net.daboross.bukkitdev.skywars.game.GameQueueTimer;
+import net.daboross.bukkitdev.skywars.events.listeners.*;
+import net.daboross.bukkitdev.skywars.game.*;
 import net.daboross.bukkitdev.skywars.kits.KitGuiManager;
 import net.daboross.bukkitdev.skywars.kits.SkyKitConfiguration;
-import net.daboross.bukkitdev.skywars.libraries.pluginstatistics.PluginStatistics;
-import net.daboross.bukkitdev.skywars.listeners.AttackerStorageListener;
-import net.daboross.bukkitdev.skywars.listeners.BuildingLimiter;
-import net.daboross.bukkitdev.skywars.listeners.CommandWhitelistListener;
-import net.daboross.bukkitdev.skywars.listeners.KitGuiListener;
-import net.daboross.bukkitdev.skywars.listeners.MobSpawnDisable;
-import net.daboross.bukkitdev.skywars.listeners.PlayerJoinInArenaWorldListener;
-import net.daboross.bukkitdev.skywars.listeners.PlayerStateListener;
-import net.daboross.bukkitdev.skywars.listeners.PortalListener;
-import net.daboross.bukkitdev.skywars.listeners.ScoreReplaceChatListener;
+import net.daboross.bukkitdev.skywars.listeners.*;
 import net.daboross.bukkitdev.skywars.player.OnlineSkyPlayers;
 import net.daboross.bukkitdev.skywars.score.ScoreStorage;
 import net.daboross.bukkitdev.skywars.scoreboards.TeamScoreboardListener;
@@ -86,7 +59,16 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.mcstats.MetricsLite;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.file.Path;
+import java.util.Locale;
+import java.util.UUID;
+import java.util.logging.Level;
 
 public class SkyWarsPlugin extends JavaPlugin implements SkyWars {
 
@@ -139,6 +121,7 @@ public class SkyWarsPlugin extends JavaPlugin implements SkyWars {
             startPlugin();
             metrics();
             pluginStatistics();
+            ScoreboardLib.setPluginInstance(this);
         } catch (Throwable ex) {
             getLogger().log(Level.SEVERE, "Startup failed", ex);
             enabledCorrectly = false;

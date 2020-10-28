@@ -22,8 +22,8 @@
     <version>2.2.2</version>
     <packaging>jar</packaging>
 
-    <name>SkyWars</name>
-    <description>Bukkit plugin to facilitate arena minigames</description>
+    <name>Royal-SkyWars</name>
+    <description>SkyWars Minigame made by Dabo Ross and customized by RoyalMind Network</description>
     <url>https://dabo.guru/projects/skywars</url>
     <inceptionYear>2013</inceptionYear>
     <licenses>
