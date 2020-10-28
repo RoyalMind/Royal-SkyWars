@@ -1,12 +1,12 @@
 name: ${project.name}
 main: net.daboross.bukkitdev.skywars.SkyWarsPlugin
 version: ${project.version}
-author: Dabo Ross
+authors: [Dabo Ross, ImSrPanda]
 description: ${project.description}
 url: ${project.url}
 softdepend: [Vault, WorldEdit, MultiInv]
 commands:
   skywars:
-    aliases: [sw]
+    aliases: [rsw]
   skywarssetup:
-    aliases: [sws]
+    aliases: [rsws]

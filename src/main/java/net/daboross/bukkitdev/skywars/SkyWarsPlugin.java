@@ -153,10 +153,9 @@ public class SkyWarsPlugin extends JavaPlugin implements SkyWars {
             throw new StartupFailedException("Failed to load configuration", ex);
         }
         if (!configuration.isSkipUuidCheck() && !supportsUuids()) {
-            getLogger().log(Level.SEVERE, "Warning! You are running a CraftBukkit version that is not supported by SkyWars v" + SkyStatic.getVersion());
+            getLogger().log(Level.SEVERE, "Warning! You are running a CraftBukkit version that is not supported by Royal-SkyWars v" + SkyStatic.getVersion());
             getLogger().log(Level.SEVERE, "Please update to at least CraftBukkit version 1.7.8, or the equivilant for your server software.");
             getLogger().log(Level.SEVERE, "If you wish to ignore this, and run SkyWars anyways, set 'skip-uuid-version-check' to true in plugins/SkyWars/main-config.yml");
-            getLogger().log(Level.SEVERE, "Download SkyWars v1.4.4 if you want to run on an older version of Minecraft.");
             throw new StartupFailedException("See above");
         }
         multiinvWorkaroundEnabled = testForMultiinvWorkaround(configuration.isMultiinvWorkaroundPossible(), configuration.isMultiinvWorkaroundForced());
@@ -346,7 +345,8 @@ public class SkyWarsPlugin extends JavaPlugin implements SkyWars {
     }
 
     private void metrics() {
-        try {
+        getLogger().log(Level.INFO, "Metrics system bypassed ;)");
+        /*try {
             MetricsLite metrics;
             try {
                 metrics = new MetricsLite(this);
@@ -358,11 +358,12 @@ public class SkyWarsPlugin extends JavaPlugin implements SkyWars {
             if (configuration.isDebug()) {
                 getLogger().log(Level.WARNING, "Failed to start plugin metrics!", ex);
             }
-        }
+        }*/
     }
 
     private void pluginStatistics() {
-        try {
+        getLogger().log(Level.INFO, "Statistics system bypassed ;) (Its a custom version, don't have support)");
+        /*try {
             if (!configuration.isReportPluginStatistics()) {
                 return;
             }
@@ -372,7 +373,7 @@ public class SkyWarsPlugin extends JavaPlugin implements SkyWars {
             if (configuration.isDebug()) {
                 getLogger().log(Level.WARNING, "Failed to start plugin-statistics!", ex);
             }
-        }
+        }*/
     }
 
     @Override

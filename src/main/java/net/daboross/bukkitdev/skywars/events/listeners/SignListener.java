@@ -111,15 +111,14 @@ public class SignListener implements Listener {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent evt) {
-        if (evt.getClickedBlock() != null
-                && (evt.getClickedBlock().getType() == Material.WALL_SIGN
+        if (evt.getClickedBlock() != null && (evt.getClickedBlock().getType() == Material.WALL_SIGN
                 || evt.getClickedBlock().getType() == Material.SIGN_POST)) {
-            BlockState state = evt.getClickedBlock().getState();
+            final BlockState state = evt.getClickedBlock().getState();
             if (state instanceof Sign
                     && plugin.getLocationStore().getSigns().contains(new SkyBlockLocation(evt.getClickedBlock()))
                     && testSign((Sign) state)) {
-                Player p = evt.getPlayer();
-                UUID uuid = p.getUniqueId();
+                final Player p = evt.getPlayer();
+                final UUID uuid = p.getUniqueId();
 
                 if (!p.hasPermission("skywars.join")) {
                     p.sendMessage(SkyTrans.get(TransKey.NO_PERMISSION_CANNOT_USE_JOIN_SIGN));
@@ -129,7 +128,11 @@ public class SignListener implements Listener {
                 if (plugin.getGameQueue().inQueue(uuid)) {
                     p.sendMessage(SkyTrans.get(TransKey.CMD_JOIN_ALREADY_QUEUED));
                     // Kit GUI is automatically shown when joining, but it should also be shown if already queued.
-                    plugin.getKitGui().autoOpenGuiIfApplicable(p);
+                    /*
+                        [Royal-SkyWars]
+                        Kit GUI removed when click in a join sign
+                     */
+                    //plugin.getKitGui().autoOpenGuiIfApplicable(p);
                 } else if (plugin.getGameQueue().inSecondaryQueue(uuid)) {
                     p.sendMessage(SkyTrans.get(TransKey.CMD_JOIN_ALREADY_IN_SECONDARY_QUEUE));
                     p.sendMessage(SkyTrans.get(TransKey.SECONDARY_QUEUE_EXPLANATION));

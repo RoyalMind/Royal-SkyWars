@@ -16,13 +16,13 @@
  */
 package net.daboross.bukkitdev.skywars.listeners;
 
-import java.util.logging.Level;
-import net.daboross.bukkitdev.skywars.SkyWarsPlugin;
-import net.daboross.bukkitdev.skywars.api.SkyStatic;
-import net.daboross.bukkitdev.skywars.world.Statics;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
+        import java.util.logging.Level;
+        import net.daboross.bukkitdev.skywars.SkyWarsPlugin;
+        import net.daboross.bukkitdev.skywars.api.SkyStatic;
+        import net.daboross.bukkitdev.skywars.world.Statics;
+        import org.bukkit.event.EventHandler;
+        import org.bukkit.event.Listener;
+        import org.bukkit.event.player.PlayerJoinEvent;
 
 public class PlayerJoinInArenaWorldListener implements Listener {
 
