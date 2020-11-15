@@ -1,0 +1,32 @@
+PreLobby:
+
+
+Game:
+  Cages:
+    Time: 10
+    DeletionRadius: 5
+Scoreboard:
+  Lobby:
+    Title: '&e&lRoyalMind'
+    Body:
+      - '&eVictorias: &f%wins%'
+      - '&ePerdidas: &f%loses%'
+      - '&eAsesinatos: &f%kills%'
+  PreLobby:
+    Title: '&e&lRoyalMind'
+    Body:
+      - '&eJugadores: &f%players-ingame%/%total-players-ingame%'
+      - '&eComenzando en: &f%time-ingame%'
+      - '&eMapa: &f%map-name%'
+  InGame:
+    Title: '&e&lRoyalMind'
+    Body:
+      - '&eJugadores: &f%players-ingame%/%total-players-ingame%'
+      - '&eServidor: &f%server-id%'
+      - '&eMapa: &f%map-name%'
+  InTeamsGame:
+    Title: '&e&lRoyalMind'
+    Body:
+      - '&eJugadores: &f%players-ingame%/%total-players-ingame%'
+      - '&eServidor: &f%server-id%'
+      - '&eMapa: &f%map-name%'

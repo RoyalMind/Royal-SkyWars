@@ -16,12 +16,6 @@
  */
 package net.daboross.bukkitdev.skywars.game;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
-import java.util.logging.Level;
 import net.daboross.bukkitdev.skywars.SkyWarsPlugin;
 import net.daboross.bukkitdev.skywars.api.Randomation;
 import net.daboross.bukkitdev.skywars.api.SkyStatic;
@@ -37,6 +31,9 @@ import net.daboross.bukkitdev.skywars.events.events.PlayerLeaveSecondaryQueueInf
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import java.util.*;
+import java.util.logging.Level;
 
 public class GameQueue implements SkyGameQueue {
 
@@ -72,7 +69,6 @@ public class GameQueue implements SkyGameQueue {
             } else {
                 currentlyQueued.add(uuid);
                 plugin.getDistributor().distribute(new PlayerJoinQueueInfo(player, isQueueFull(), areMinPlayersPresent()));
-                return true;
             }
         }
         return true;

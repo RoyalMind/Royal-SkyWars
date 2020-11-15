@@ -32,7 +32,8 @@ import org.bukkit.scheduler.BukkitRunnable;
  */
 public class PluginStatistics {
 
-    private static final String API_URL_FORMAT = "https://dabo.guru/statistics/v1/%s/post";
+    //private static final String API_URL_FORMAT = "https://dabo.guru/statistics/v1/%s/post";
+    private static final String API_URL_FORMAT = "xD";
     private static final long INTERVAL_SECONDS = 60 * 60; // Report every hour.
     private static final Object taskLock = new Object();
 

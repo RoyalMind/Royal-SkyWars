@@ -10,3 +10,5 @@ commands:
     aliases: [rsw]
   skywarssetup:
     aliases: [rsws]
+  rmskywars:
+    aliases: [rmsw]

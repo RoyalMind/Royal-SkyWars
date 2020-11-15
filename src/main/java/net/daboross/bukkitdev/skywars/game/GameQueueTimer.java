@@ -18,6 +18,7 @@ package net.daboross.bukkitdev.skywars.game;
 
 import net.daboross.bukkitdev.skywars.SkyWarsPlugin;
 import net.daboross.bukkitdev.skywars.api.SkyStatic;
+import net.daboross.bukkitdev.skywars.api.arenaconfig.SkyArena;
 import net.daboross.bukkitdev.skywars.api.translations.SkyTrans;
 import net.daboross.bukkitdev.skywars.api.translations.TransKey;
 import net.daboross.bukkitdev.skywars.events.events.GameStartInfo;
@@ -33,6 +34,8 @@ public class GameQueueTimer {
 
     private final SkyWarsPlugin plugin;
     private final GenericTimer startTimer;
+    private SkyArena arena;
+    private long timeToStart;
 
     public GameQueueTimer(final SkyWarsPlugin plugin) {
         this.plugin = plugin;
@@ -91,6 +94,7 @@ public class GameQueueTimer {
         SkyStatic.debug("[Timer] Starting arena copy for %s.", plugin.getGameQueue().getPlannedArena().getArenaName());
         plugin.getWorldHandler().startCopyingArena(plugin.getGameQueue().getPlannedArena(),
                 plugin.getConfiguration().getTimeBeforeGameStartToCopyArena());
+        arena = plugin.getGameQueue().getPlannedArena();
     }
 
     private class MessageRunnable implements Runnable {
@@ -121,6 +125,7 @@ public class GameQueueTimer {
             } else {
                 transKey = TransKey.GAME_TIMER_STARTING_IN_SECONDS;
             }
+            timeToStart = displayTime;
             String message = SkyTrans.get(transKey, displayTime);
             if (plugin.getConfiguration().shouldLimitStartTimerMessagesToArenaPlayers()) {
                 for (UUID uuid : plugin.getGameQueue().getInQueue()) {
@@ -134,5 +139,13 @@ public class GameQueueTimer {
                 Bukkit.broadcastMessage(message);
             }
         }
+    }
+
+    public SkyArena getArena() {
+        return arena;
+    }
+
+    public long getTimeToStart() {
+        return timeToStart;
     }
 }

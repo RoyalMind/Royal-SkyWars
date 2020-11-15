@@ -49,6 +49,7 @@ import net.daboross.bukkitdev.skywars.scoreboards.TeamScoreboardListener;
 import net.daboross.bukkitdev.skywars.storage.LocationStore;
 import net.daboross.bukkitdev.skywars.util.CrossVersion;
 import net.daboross.bukkitdev.skywars.world.SkyWorldHandler;
+import net.royalmind.skywars.RoyalSkyWars;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -107,6 +108,9 @@ public class SkyWarsPlugin extends JavaPlugin implements SkyWars {
     // Workaround variables
     private boolean multiinvWorkaroundEnabled = false;
 
+    //Royal-SkyWars
+    private RoyalSkyWars royalSkyWars;
+
     @Override
     public void onLoad() {
         SkyStatic.setPluginName(this.getDescription().getName());
@@ -122,6 +126,7 @@ public class SkyWarsPlugin extends JavaPlugin implements SkyWars {
             metrics();
             pluginStatistics();
             ScoreboardLib.setPluginInstance(this);
+            this.royalSkyWars = new RoyalSkyWars(this);
         } catch (Throwable ex) {
             getLogger().log(Level.SEVERE, "Startup failed", ex);
             enabledCorrectly = false;
